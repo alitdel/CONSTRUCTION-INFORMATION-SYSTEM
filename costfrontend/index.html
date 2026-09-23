@@ -1,8 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Construction Information System</title>
 
     <link rel="stylesheet" href="style.css">
@@ -12,198 +15,494 @@
 
     <div class="system">
 
-        <!-- Sidebar -->
+        <!-- ==============================
+             SIDEBAR
+        =============================== -->
+
         <aside class="sidebar">
 
             <div class="logo">
+
                 <h2>CIS</h2>
-                <p>Construction Information System</p>
+
+                <p>
+                    Construction Information System
+                </p>
+
             </div>
 
+
             <nav>
-                <a href="#" class="active">Dashboard</a>
-                <a href="#">Projects</a>
-                <a href="#">Clients</a>
-                <a href="#">Workers</a>
-                <a href="#">Materials</a>
-                <a href="#">Equipment</a>
-                <a href="#">Tasks</a>
-                <a href="#">Expenses</a>
-                <a href="#">Payments</a>
-                <a href="#">Reports</a>
+
+                <a href="#" class="active">
+                    Dashboard
+                </a>
+
+                <a href="#">
+                    Projects
+                </a>
+
+                <a href="#">
+                    Clients
+                </a>
+
+                <a href="#">
+                    Workers
+                </a>
+
+                <a href="#">
+                    Materials
+                </a>
+
+                <a href="#">
+                    Equipment
+                </a>
+
+                <a href="#">
+                    Tasks
+                </a>
+
+                <a href="#">
+                    Expenses
+                </a>
+
+                <a href="#">
+                    Payments
+                </a>
+
+                <a href="#">
+                    Reports
+                </a>
+
             </nav>
 
         </aside>
 
 
-        <!-- Main Content -->
+
+        <!-- ==============================
+             MAIN CONTENT
+        =============================== -->
+
         <main class="main-content">
 
-            <!-- Top Bar -->
+
+            <!-- TOP BAR -->
+
             <header class="topbar">
 
                 <div>
-                    <h1>Dashboard</h1>
-                    <p>Construction Information System</p>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Construction Information System
+                    </p>
+
                 </div>
 
+
                 <div class="user">
-                    <span>Administrator</span>
+
+                    <span>
+                        Administrator
+                    </span>
+
                 </div>
 
             </header>
 
 
-            <!-- Dashboard -->
+
+            <!-- ==============================
+                 DASHBOARD
+            =============================== -->
+
             <section class="dashboard">
 
+
+                <!-- WELCOME -->
+
                 <div class="welcome">
-                    <h2>Welcome to the Construction Information System</h2>
+
+                    <h2>
+                        Welcome to the Construction Information System
+                    </h2>
+
                     <p>
-                        Manage construction projects, workers, materials,
-                        equipment, finances and project progress from one system.
+                        Manage construction projects, workers,
+                        materials, equipment, finances and
+                        project progress from one system.
                     </p>
+
                 </div>
 
 
-                <!-- Summary Cards -->
+
+                <!-- ==============================
+                     SUMMARY CARDS
+                =============================== -->
+
                 <div class="cards">
 
-                    <div class="card">
-                        <h3>Projects</h3>
-                        <p class="number">0</p>
-                        <span>Active projects</span>
-                    </div>
+
+                    <!-- PROJECTS -->
 
                     <div class="card">
-                        <h3>Workers</h3>
-                        <p class="number">0</p>
-                        <span>Registered workers</span>
+
+                        <h3>
+                            Projects
+                        </h3>
+
+                        <p class="number">
+                            0
+                        </p>
+
+                        <span>
+                            Active projects
+                        </span>
+
                     </div>
 
-                    <div class="card">
-                        <h3>Materials</h3>
-                        <p class="number">0</p>
-                        <span>Available materials</span>
-                    </div>
+
+
+                    <!-- WORKERS -->
 
                     <div class="card">
-                        <h3>Equipment</h3>
-                        <p class="number">0</p>
-                        <span>Equipment records</span>
+
+                        <h3>
+                            Workers
+                        </h3>
+
+                        <p class="number">
+                            0
+                        </p>
+
+                        <span>
+                            Registered workers
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- MATERIALS -->
+
+                    <div class="card">
+
+                        <h3>
+                            Materials
+                        </h3>
+
+                        <p class="number">
+                            0
+                        </p>
+
+                        <span>
+                            Available materials
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- EQUIPMENT -->
+
+                    <div class="card">
+
+                        <h3>
+                            Equipment
+                        </h3>
+
+                        <p class="number">
+                            0
+                        </p>
+
+                        <span>
+                            Equipment records
+                        </span>
+
                     </div>
 
                 </div>
 
 
-                <!-- Recent Projects -->
+
+                <!-- ==============================
+                     RECENT PROJECTS
+                =============================== -->
+
                 <div class="section">
 
+
+                    <!-- SECTION HEADER -->
+
                     <div class="section-header">
-                        <h2>Recent Projects</h2>
+
+                        <h2>
+                            Recent Projects
+                        </h2>
+
 
                         <button id="addProjectBtn">
+
                             + Add Project
+
                         </button>
+
                     </div>
 
-                   <div class="project-form" id="projectForm">
 
-    <h3>Add Construction Project</h3>
 
-    <form id="constructionProjectForm">
+                    <!-- ==============================
+                         PROJECT FORM
+                    =============================== -->
 
-        <div class="form-group">
-            <label for="projectName">Project Name</label>
-            <input
-                type="text"
-                id="projectName"
-                placeholder="Enter project name"
-                required
-            >
-        </div>
+                    <div
+                        class="project-form"
+                        id="projectForm"
+                    >
 
-        <div class="form-group">
-            <label for="clientName">Client Name</label>
-            <input
-                type="text"
-                id="clientName"
-                placeholder="Enter client name"
-                required
-            >
-        </div>
+                        <h3>
+                            Add Construction Project
+                        </h3>
 
-        <div class="form-group">
-            <label for="location">Project Location</label>
-            <input
-                type="text"
-                id="location"
-                placeholder="Enter project location"
-                required
-            >
-        </div>
 
-        <div class="form-group">
-            <label for="budget">Project Budget (UGX)</label>
-            <input
-                type="number"
-                id="budget"
-                placeholder="Enter project budget"
-                min="0"
-                required
-            >
-        </div>
+                        <form
+                            id="constructionProjectForm"
+                        >
 
-        <div class="form-row">
 
-            <div class="form-group">
-                <label for="startDate">Start Date</label>
-                <input
-                    type="date"
-                    id="startDate"
-                    required
-                >
-            </div>
+                            <!-- PROJECT NAME -->
 
-            <div class="form-group">
-                <label for="endDate">Expected Completion Date</label>
-                <input
-                    type="date"
-                    id="endDate"
-                    required
-                >
-            </div>
+                            <div class="form-group">
 
-        </div>
+                                <label for="projectName">
+                                    Project Name
+                                </label>
 
-        <div class="form-group">
-            <label for="projectStatus">Project Status</label>
+                                <input
+                                    type="text"
+                                    id="projectName"
+                                    placeholder="Enter project name"
+                                    required
+                                >
 
-            <select id="projectStatus" required>
-                <option value="">Select status</option>
-                <option value="Planning">Planning</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-                <option value="On Hold">On Hold</option>
-            </select>
-        </div>
+                            </div>
 
-        <button type="submit" class="save-project">
-            Save Project
-        </button>
 
-    </form>
 
-</div>
+                            <!-- CLIENT -->
+
+                            <div class="form-group">
+
+                                <label for="clientName">
+                                    Client Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="clientName"
+                                    placeholder="Enter client name"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- LOCATION -->
+
+                            <div class="form-group">
+
+                                <label for="location">
+                                    Project Location
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="location"
+                                    placeholder="Enter project location"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- BUDGET -->
+
+                            <div class="form-group">
+
+                                <label for="budget">
+                                    Project Budget (UGX)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="budget"
+                                    placeholder="Enter project budget"
+                                    min="0"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- DATES -->
+
+                            <div class="form-row">
+
+
+                                <!-- START DATE -->
+
+                                <div class="form-group">
+
+                                    <label for="startDate">
+                                        Start Date
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="startDate"
+                                        required
+                                    >
+
+                                </div>
+
+
+
+                                <!-- END DATE -->
+
+                                <div class="form-group">
+
+                                    <label for="endDate">
+                                        Expected Completion Date
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="endDate"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- STATUS -->
+
+                            <div class="form-group">
+
+                                <label for="projectStatus">
+                                    Project Status
+                                </label>
+
+
+                                <select
+                                    id="projectStatus"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select status
+                                    </option>
+
+                                    <option value="Planning">
+                                        Planning
+                                    </option>
+
+                                    <option value="In Progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="Completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="On Hold">
+                                        On Hold
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- SAVE BUTTON -->
+
+                            <button
+                                type="submit"
+                                class="save-project"
+                            >
+
+                                Save Project
+
+                            </button>
+
+
+                        </form>
+
+                    </div>
+
+
+
+                    <!-- ==============================
+                         SAVED PROJECTS
+                    =============================== -->
+
+                    <div
+                        id="projectList"
+                        class="project-list"
+                    >
+
+
+                        <!-- EMPTY STATE -->
+
+                        <div class="empty-state">
+
+                            <h3>
+                                No projects yet
+                            </h3>
+
+                            <p>
+                                Add your first construction
+                                project to begin managing
+                                construction information.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
+
 
             </section>
 
+
         </main>
 
+
     </div>
+
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
+```
