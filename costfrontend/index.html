@@ -3,27 +3,113 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Construction Information System</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <div class="system">
+<div class="system">
 
-        <!-- ==============================
-             SIDEBAR
-        =============================== -->
 
-        <aside class="sidebar">
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
 
-            <div class="logo">
+    <aside class="sidebar">
 
-                <h2>CIS</h2>
+        <div class="logo">
+
+            <h2>CIS</h2>
+
+            <p>
+                Construction Information System
+            </p>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="#"
+                class="active"
+            >
+                Dashboard
+            </a>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="#clients">
+                Clients
+            </a>
+
+            <a href="#workers">
+                Workers
+            </a>
+
+            <a href="#">
+                Materials
+            </a>
+
+            <a href="#">
+                Equipment
+            </a>
+
+            <a href="#">
+                Tasks
+            </a>
+
+            <a href="#">
+                Expenses
+            </a>
+
+            <a href="#">
+                Payments
+            </a>
+
+            <a href="#">
+                Reports
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
 
                 <p>
                     Construction Information System
@@ -32,475 +118,740 @@
             </div>
 
 
-            <nav>
+            <div class="user">
 
-                <a href="#" class="active">
-                    Dashboard
-                </a>
+                <span>
+                    Administrator
+                </span>
 
-                <a href="#">
-                    Projects
-                </a>
+            </div>
 
-                <a href="#">
-                    Clients
-                </a>
-
-                <a href="#">
-                    Workers
-                </a>
-
-                <a href="#">
-                    Materials
-                </a>
-
-                <a href="#">
-                    Equipment
-                </a>
-
-                <a href="#">
-                    Tasks
-                </a>
-
-                <a href="#">
-                    Expenses
-                </a>
-
-                <a href="#">
-                    Payments
-                </a>
-
-                <a href="#">
-                    Reports
-                </a>
-
-            </nav>
-
-        </aside>
+        </header>
 
 
 
-        <!-- ==============================
-             MAIN CONTENT
-        =============================== -->
+        <!-- ==========================================
+             DASHBOARD
+        =========================================== -->
 
-        <main class="main-content">
+        <section class="dashboard">
 
 
-            <!-- TOP BAR -->
+            <!-- WELCOME -->
 
-            <header class="topbar">
+            <div class="welcome">
 
-                <div>
+                <h2>
+                    Welcome to the Construction Information System
+                </h2>
 
-                    <h1>
-                        Dashboard
-                    </h1>
+                <p>
+                    Manage construction projects, clients,
+                    workers, materials, equipment, finances
+                    and project progress from one system.
+                </p>
 
-                    <p>
-                        Construction Information System
+            </div>
+
+
+
+            <!-- ==========================================
+                 SUMMARY CARDS
+            =========================================== -->
+
+            <div class="cards">
+
+
+                <!-- PROJECTS -->
+
+                <div class="card">
+
+                    <h3>
+                        Projects
+                    </h3>
+
+                    <p
+                        class="number"
+                        id="projectCount"
+                    >
+                        0
                     </p>
 
-                </div>
-
-
-                <div class="user">
-
                     <span>
-                        Administrator
+                        Active projects
                     </span>
 
                 </div>
 
-            </header>
 
 
+                <!-- WORKERS -->
 
-            <!-- ==============================
-                 DASHBOARD
-            =============================== -->
+                <div class="card">
 
-            <section class="dashboard">
+                    <h3>
+                        Workers
+                    </h3>
 
-
-                <!-- WELCOME -->
-
-                <div class="welcome">
-
-                    <h2>
-                        Welcome to the Construction Information System
-                    </h2>
-
-                    <p>
-                        Manage construction projects, workers,
-                        materials, equipment, finances and
-                        project progress from one system.
+                    <p
+                        class="number"
+                        id="workerCount"
+                    >
+                        0
                     </p>
 
-                </div>
-
-
-
-                <!-- ==============================
-                     SUMMARY CARDS
-                =============================== -->
-
-                <div class="cards">
-
-
-                    <!-- PROJECTS -->
-
-                    <div class="card">
-
-                        <h3>
-                            Projects
-                        </h3>
-
-                        <p class="number">
-                            0
-                        </p>
-
-                        <span>
-                            Active projects
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- WORKERS -->
-
-                    <div class="card">
-
-                        <h3>
-                            Workers
-                        </h3>
-
-                        <p class="number">
-                            0
-                        </p>
-
-                        <span>
-                            Registered workers
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- MATERIALS -->
-
-                    <div class="card">
-
-                        <h3>
-                            Materials
-                        </h3>
-
-                        <p class="number">
-                            0
-                        </p>
-
-                        <span>
-                            Available materials
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- EQUIPMENT -->
-
-                    <div class="card">
-
-                        <h3>
-                            Equipment
-                        </h3>
-
-                        <p class="number">
-                            0
-                        </p>
-
-                        <span>
-                            Equipment records
-                        </span>
-
-                    </div>
+                    <span>
+                        Registered workers
+                    </span>
 
                 </div>
 
 
 
-                <!-- ==============================
-                     RECENT PROJECTS
-                =============================== -->
+                <!-- MATERIALS -->
 
-                <div class="section">
+                <div class="card">
 
+                    <h3>
+                        Materials
+                    </h3>
 
-                    <!-- SECTION HEADER -->
+                    <p
+                        class="number"
+                        id="materialCount"
+                    >
+                        0
+                    </p>
 
-                    <div class="section-header">
+                    <span>
+                        Available materials
+                    </span>
 
-                        <h2>
-                            Recent Projects
-                        </h2>
-
-
-                        <button id="addProjectBtn">
-
-                            + Add Project
-
-                        </button>
-
-                    </div>
+                </div>
 
 
 
-                    <!-- ==============================
-                         PROJECT FORM
-                    =============================== -->
+                <!-- EQUIPMENT -->
 
-                    <div
-                        class="project-form"
-                        id="projectForm"
+                <div class="card">
+
+                    <h3>
+                        Equipment
+                    </h3>
+
+                    <p
+                        class="number"
+                        id="equipmentCount"
+                    >
+                        0
+                    </p>
+
+                    <span>
+                        Equipment records
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 PROJECTS
+            =========================================== -->
+
+            <div
+                class="section"
+                id="projects"
+            >
+
+                <div class="section-header">
+
+                    <h2>
+                        Recent Projects
+                    </h2>
+
+                    <button id="addProjectBtn">
+                        + Add Project
+                    </button>
+
+                </div>
+
+
+
+                <!-- PROJECT FORM -->
+
+                <div
+                    class="project-form"
+                    id="projectForm"
+                >
+
+                    <h3>
+                        Add Construction Project
+                    </h3>
+
+
+                    <form
+                        id="constructionProjectForm"
                     >
 
-                        <h3>
-                            Add Construction Project
-                        </h3>
 
+                        <div class="form-group">
 
-                        <form
-                            id="constructionProjectForm"
-                        >
+                            <label for="projectName">
+                                Project Name
+                            </label>
 
-
-                            <!-- PROJECT NAME -->
-
-                            <div class="form-group">
-
-                                <label for="projectName">
-                                    Project Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="projectName"
-                                    placeholder="Enter project name"
-                                    required
-                                >
-
-                            </div>
-
-
-
-                            <!-- CLIENT -->
-
-                            <div class="form-group">
-
-                                <label for="clientName">
-                                    Client Name
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="clientName"
-                                    placeholder="Enter client name"
-                                    required
-                                >
-
-                            </div>
-
-
-
-                            <!-- LOCATION -->
-
-                            <div class="form-group">
-
-                                <label for="location">
-                                    Project Location
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="location"
-                                    placeholder="Enter project location"
-                                    required
-                                >
-
-                            </div>
-
-
-
-                            <!-- BUDGET -->
-
-                            <div class="form-group">
-
-                                <label for="budget">
-                                    Project Budget (UGX)
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="budget"
-                                    placeholder="Enter project budget"
-                                    min="0"
-                                    required
-                                >
-
-                            </div>
-
-
-
-                            <!-- DATES -->
-
-                            <div class="form-row">
-
-
-                                <!-- START DATE -->
-
-                                <div class="form-group">
-
-                                    <label for="startDate">
-                                        Start Date
-                                    </label>
-
-                                    <input
-                                        type="date"
-                                        id="startDate"
-                                        required
-                                    >
-
-                                </div>
-
-
-
-                                <!-- END DATE -->
-
-                                <div class="form-group">
-
-                                    <label for="endDate">
-                                        Expected Completion Date
-                                    </label>
-
-                                    <input
-                                        type="date"
-                                        id="endDate"
-                                        required
-                                    >
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- STATUS -->
-
-                            <div class="form-group">
-
-                                <label for="projectStatus">
-                                    Project Status
-                                </label>
-
-
-                                <select
-                                    id="projectStatus"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select status
-                                    </option>
-
-                                    <option value="Planning">
-                                        Planning
-                                    </option>
-
-                                    <option value="In Progress">
-                                        In Progress
-                                    </option>
-
-                                    <option value="Completed">
-                                        Completed
-                                    </option>
-
-                                    <option value="On Hold">
-                                        On Hold
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-
-                            <!-- SAVE BUTTON -->
-
-                            <button
-                                type="submit"
-                                class="save-project"
+                            <input
+                                type="text"
+                                id="projectName"
+                                placeholder="Enter project name"
+                                required
                             >
-
-                                Save Project
-
-                            </button>
-
-
-                        </form>
-
-                    </div>
-
-
-
-                    <!-- ==============================
-                         SAVED PROJECTS
-                    =============================== -->
-
-                    <div
-                        id="projectList"
-                        class="project-list"
-                    >
-
-
-                        <!-- EMPTY STATE -->
-
-                        <div class="empty-state">
-
-                            <h3>
-                                No projects yet
-                            </h3>
-
-                            <p>
-                                Add your first construction
-                                project to begin managing
-                                construction information.
-                            </p>
 
                         </div>
 
 
-                    </div>
 
+                        <div class="form-group">
+
+                            <label for="clientName">
+                                Client Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="clientName"
+                                placeholder="Enter client name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="location">
+                                Project Location
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                placeholder="Enter project location"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="budget">
+                                Project Budget (UGX)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="budget"
+                                placeholder="Enter project budget"
+                                min="0"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-row">
+
+
+                            <div class="form-group">
+
+                                <label for="startDate">
+                                    Start Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="startDate"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="endDate">
+                                    Expected Completion Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="endDate"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="projectStatus">
+                                Project Status
+                            </label>
+
+                            <select
+                                id="projectStatus"
+                                required
+                            >
+
+                                <option value="">
+                                    Select status
+                                </option>
+
+                                <option value="Planning">
+                                    Planning
+                                </option>
+
+                                <option value="In Progress">
+                                    In Progress
+                                </option>
+
+                                <option value="Completed">
+                                    Completed
+                                </option>
+
+                                <option value="On Hold">
+                                    On Hold
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <button
+                            type="submit"
+                            class="save-project"
+                        >
+                            Save Project
+                        </button>
+
+
+                    </form>
 
                 </div>
 
 
-            </section>
+
+                <!-- PROJECT LIST -->
+
+                <div
+                    id="projectList"
+                    class="project-list"
+                >
+
+                    <div class="empty-state">
+
+                        <h3>
+                            Loading projects...
+                        </h3>
+
+                        <p>
+                            Please wait while the system
+                            loads project information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
-        </main>
+
+            <!-- ==========================================
+                 CLIENTS
+            =========================================== -->
+
+            <div
+                class="section"
+                id="clients"
+            >
 
 
-    </div>
+                <div class="section-header">
+
+                    <h2>
+                        Clients
+                    </h2>
+
+                    <button id="addClientBtn">
+                        + Add Client
+                    </button>
+
+                </div>
 
 
 
-    <!-- ==============================
-         JAVASCRIPT
-    =============================== -->
+                <!-- CLIENT FORM -->
 
-    <script src="script.js"></script>
+                <div
+                    class="project-form"
+                    id="clientForm"
+                    style="display: none;"
+                >
+
+                    <h3>
+                        Add Construction Client
+                    </h3>
+
+
+                    <form
+                        id="constructionClientForm"
+                    >
+
+
+                        <!-- CLIENT NAME -->
+
+                        <div class="form-group">
+
+                            <label for="clientNameInput">
+                                Client Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="clientNameInput"
+                                placeholder="Enter client name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- ORGANIZATION -->
+
+                        <div class="form-group">
+
+                            <label for="organizationInput">
+                                Organization
+                            </label>
+
+                            <input
+                                type="text"
+                                id="organizationInput"
+                                placeholder="Enter organization"
+                            >
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label for="clientPhone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="clientPhone"
+                                placeholder="Enter phone number"
+                            >
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="clientEmail">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="clientEmail"
+                                placeholder="Enter email address"
+                            >
+
+                        </div>
+
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group">
+
+                            <label for="clientAddress">
+                                Address
+                            </label>
+
+                            <textarea
+                                id="clientAddress"
+                                placeholder="Enter client address"
+                                rows="3"
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- SAVE CLIENT -->
+
+                        <button
+                            type="submit"
+                            class="save-project"
+                        >
+                            Save Client
+                        </button>
+
+
+                    </form>
+
+                </div>
+
+
+
+                <!-- CLIENT LIST -->
+
+                <div
+                    id="clientList"
+                    class="project-list"
+                >
+
+                    <div class="empty-state">
+
+                        <h3>
+                            No clients yet
+                        </h3>
+
+                        <p>
+                            Add your first construction client.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 WORKERS
+            =========================================== -->
+
+            <div
+                class="section"
+                id="workers"
+            >
+
+
+                <div class="section-header">
+
+                    <h2>
+                        Workers
+                    </h2>
+
+                    <button id="addWorkerBtn">
+                        + Add Worker
+                    </button>
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     WORKER FORM
+                =========================================== -->
+
+                <div
+                    class="project-form"
+                    id="workerForm"
+                    style="display: none;"
+                >
+
+                    <h3>
+                        Add Construction Worker
+                    </h3>
+
+
+                    <form
+                        id="constructionWorkerForm"
+                    >
+
+
+                        <!-- WORKER NAME -->
+
+                        <div class="form-group">
+
+                            <label for="workerNameInput">
+                                Worker Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="workerNameInput"
+                                placeholder="Enter worker name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- JOB TITLE -->
+
+                        <div class="form-group">
+
+                            <label for="jobTitleInput">
+                                Job Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="jobTitleInput"
+                                placeholder="e.g. Engineer, Mason, Electrician"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="form-group">
+
+                            <label for="workerPhone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="workerPhone"
+                                placeholder="Enter phone number"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="workerEmail">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="workerEmail"
+                                placeholder="Enter email address"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="form-group">
+
+                            <label for="workerAddress">
+                                Address
+                            </label>
+
+                            <textarea
+                                id="workerAddress"
+                                placeholder="Enter worker address"
+                                rows="3"
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- SAVE WORKER -->
+
+                        <button
+                            type="submit"
+                            class="save-project"
+                        >
+                            Save Worker
+                        </button>
+
+
+                    </form>
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     WORKER LIST
+                =========================================== -->
+
+                <div
+                    id="workerList"
+                    class="project-list"
+                >
+
+                    <div class="empty-state">
+
+                        <h3>
+                            Loading workers...
+                        </h3>
+
+                        <p>
+                            Please wait while the system
+                            loads worker information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script src="script.js"></script>
+
 
 </body>
 

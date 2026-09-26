@@ -1,309 +1,787 @@
-const addProjectButton = document.getElementById("addProjectBtn");
-const projectForm = document.getElementById("projectForm");
-const constructionProjectForm =
-    document.getElementById("constructionProjectForm");
-
-const projectList =
-    document.getElementById("projectList");
-
-
-// ======================================
-// OPEN PROJECT FORM
-// ======================================
-
-addProjectButton.addEventListener("click", function () {
-
-    projectForm.scrollIntoView({
-        behavior: "smooth"
-    });
-
-});
-
-
-// ======================================
-// SAVE PROJECT
-// ======================================
-
-constructionProjectForm.addEventListener(
-    "submit",
-    async function (event) {
-
-        event.preventDefault();
-
-
-        const projectName =
-            document.getElementById("projectName").value;
-
-        const clientName =
-            document.getElementById("clientName").value;
-
-        const location =
-            document.getElementById("location").value;
-
-        const budget =
-            document.getElementById("budget").value;
-
-        const startDate =
-            document.getElementById("startDate").value;
-
-        const endDate =
-            document.getElementById("endDate").value;
-
-        const status =
-            document.getElementById("projectStatus").value;
-
-
-        const projectData = {
-
-            projectName,
-            clientName,
-            location,
-            budget,
-            startDate,
-            endDate,
-            status
-
-        };
-
-
-        try {
-
-            const response = await fetch(
-                "http://localhost:5000/api/projects",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify(projectData)
-                }
-            );
-
-
-            const result =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    result.message ||
-                    "Failed to save project"
-                );
-
-            }
-
-
-            alert("Project saved successfully!");
-
-
-            constructionProjectForm.reset();
-
-
-            // Reload projects from database
-            loadProjects();
-
-
-        }
-
-        catch (error) {
-
-            console.error(error);
-
-            alert(
-                "Unable to save project. " +
-                "Please make sure the backend server is running."
-            );
-
-        }
-
-    }
-);
-
-
-// ======================================
-// LOAD PROJECTS FROM DATABASE
-// ======================================
+const API_URL = "http://localhost:5000";
 
 async function loadProjects() {
+    const projectList = document.getElementById("projectList");
+    const projectCount = document.getElementById("projectCount");
+
+    try {
+        const response = await fetch(API_URL + "/api/projects");
+
+        if (!response.ok) {
+            throw new Error("Server returned an error");
+        }
+
+        const data = await response.json();
+
+        console.log("Project data:", data);
+
+        /*
+         * Your API is returning an array directly,
+         * for example:
+         *
+         * [
+         *   {
+         *      project_name: "...",
+         *      client_name: "..."
+         *   }
+         * ]
+         */
+
+        const projects = Array.isArray(data)
+            ? data
+            : data.projects || [];
+
+        projectList.innerHTML = "";
+
+        projectCount.textContent = projects.length;
+
+        if (projects.length === 0) {
+            projectList.innerHTML = `
+                <div class="empty-state">
+                    <h3>No projects yet</h3>
+                    <p>Add your first construction project.</p>
+                </div>
+            `;
+
+            return;
+        }
+
+        projects.forEach(function(project) {
+
+            const card = document.createElement("div");
+
+            card.className = "project-card";
+
+            card.innerHTML = `
+                <div class="project-header">
+
+                    <h3>
+                        ${project.project_name}
+                    </h3>
+
+                    <span class="status">
+                        ${project.status}
+                    </span>
+
+                </div>
+
+                <div class="project-details">
+
+                    <p>
+                        <strong>Client:</strong>
+                        ${project.client_name}
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        ${project.location}
+                    </p>
+
+                    <p>
+                        <strong>Budget:</strong>
+                        UGX ${Number(project.budget).toLocaleString()}
+                    </p>
+
+                    <p>
+                        <strong>Start Date:</strong>
+                        ${project.start_date}
+                    </p>
+
+                    <p>
+                        <strong>Expected Completion:</strong>
+                        ${project.end_date}
+                    </p>
+
+                </div>
+            `;
+
+            projectList.appendChild(card);
+
+        });
+
+    } catch (error) {
+
+        console.error("Project loading error:", error);
+
+        projectList.innerHTML = `
+            <div class="empty-state">
+
+                <h3>
+                    Unable to load projects
+                </h3>
+
+                <p>
+                    ${error.message}
+                </p>
+
+            </div>
+        `;
+    }
+}
+
+
+loadProjects();
+// ==========================================
+// CLIENT MANAGEMENT
+// ==========================================
+
+
+// LOAD CLIENTS
+
+async function loadClients() {
+
+    const clientList =
+        document.getElementById("clientList");
 
     try {
 
-        const response = await fetch(
-            "http://localhost:5000/api/projects"
-        );
-
-
-        const result =
-            await response.json();
-
+        const response =
+            await fetch(API_URL + "/api/clients");
 
         if (!response.ok) {
 
             throw new Error(
-                result.message ||
-                "Failed to load projects"
+                "Unable to load clients"
             );
 
         }
 
+        const data =
+            await response.json();
 
-        projectList.innerHTML = "";
+        console.log(
+            "Clients received:",
+            data
+        );
 
 
-        if (
-            !result.projects ||
-            result.projects.length === 0
-        ) {
+        const clients =
+            Array.isArray(data)
+                ? data
+                : data.clients || [];
 
-            projectList.innerHTML = `
+
+        clientList.innerHTML = "";
+
+
+        if (clients.length === 0) {
+
+            clientList.innerHTML = `
 
                 <div class="empty-state">
 
-                    <h3>No projects yet</h3>
+                    <h3>
+                        No clients yet
+                    </h3>
 
                     <p>
-                        Add your first construction
-                        project to begin managing
-                        construction information.
+                        Add your first construction client.
                     </p>
 
                 </div>
 
             `;
 
-            updateProjectCount();
-
             return;
+
         }
 
 
-        result.projects.forEach(function (project) {
+        clients.forEach(function(client) {
 
-            displayProject(project);
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "project-card";
+
+
+            card.innerHTML = `
+
+                <div class="project-header">
+
+                    <h3>
+                        ${client.client_name}
+                    </h3>
+
+                </div>
+
+
+                <div class="project-details">
+
+                    <p>
+                        <strong>Organization:</strong>
+                        ${client.organization || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        ${client.phone || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        ${client.email || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Address:</strong>
+                        ${client.address || "N/A"}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            clientList.appendChild(card);
 
         });
-
-
-        updateProjectCount();
 
     }
 
     catch (error) {
 
         console.error(
-            "Error loading projects:",
+            "Client loading error:",
             error
         );
+
+        clientList.innerHTML = `
+
+            <div class="empty-state">
+
+                <h3>
+                    Unable to load clients
+                </h3>
+
+                <p>
+                    ${error.message}
+                </p>
+
+            </div>
+
+        `;
 
     }
 
 }
 
 
-// ======================================
-// DISPLAY PROJECT
-// ======================================
 
-function displayProject(project) {
+// SHOW / HIDE CLIENT FORM
 
-    const projectCard =
-        document.createElement("div");
+const addClientBtn =
+    document.getElementById("addClientBtn");
 
-
-    projectCard.className =
-        "project-card";
+const clientForm =
+    document.getElementById("clientForm");
 
 
-    projectCard.innerHTML = `
+if (addClientBtn && clientForm) {
 
-        <div class="project-header">
+    addClientBtn.addEventListener(
+        "click",
+        function() {
 
-            <h3>
-                ${project.project_name}
-            </h3>
+            if (
+                clientForm.style.display ===
+                "none"
+            ) {
 
-            <span class="status">
-                ${project.status}
-            </span>
+                clientForm.style.display =
+                    "block";
 
-        </div>
+            } else {
 
+                clientForm.style.display =
+                    "none";
 
-        <div class="project-details">
+            }
 
-            <p>
-                <strong>Client:</strong>
-                ${project.client_name}
-            </p>
-
-            <p>
-                <strong>Location:</strong>
-                ${project.location}
-            </p>
-
-            <p>
-                <strong>Budget:</strong>
-                UGX
-                ${Number(
-                    project.budget
-                ).toLocaleString()}
-            </p>
-
-            <p>
-                <strong>Start Date:</strong>
-                ${project.start_date}
-            </p>
-
-            <p>
-                <strong>Expected Completion:</strong>
-                ${project.end_date}
-            </p>
-
-        </div>
-
-    `;
-
-
-    projectList.appendChild(
-        projectCard
+        }
     );
 
 }
 
 
-// ======================================
-// UPDATE PROJECT COUNT
-// ======================================
 
-function updateProjectCount() {
+// SAVE CLIENT
 
-    const projectCards =
-        projectList.querySelectorAll(
-            ".project-card"
+const constructionClientForm =
+    document.getElementById(
+        "constructionClientForm"
+    );
+
+
+if (constructionClientForm) {
+
+    constructionClientForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const clientName =
+                document.getElementById(
+                    "clientNameInput"
+                ).value.trim();
+
+
+            const organization =
+                document.getElementById(
+                    "organizationInput"
+                ).value.trim();
+
+
+            const phone =
+                document.getElementById(
+                    "clientPhone"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "clientEmail"
+                ).value.trim();
+
+
+            const address =
+                document.getElementById(
+                    "clientAddress"
+                ).value.trim();
+
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL + "/api/clients",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                clientName:
+                                    clientName,
+
+                                organization:
+                                    organization,
+
+                                phone:
+                                    phone,
+
+                                email:
+                                    email,
+
+                                address:
+                                    address
+
+                            })
+
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                console.log(
+                    "Save client result:",
+                    result
+                );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Failed to save client"
+                    );
+
+                }
+
+
+                alert(
+                    "Client saved successfully!"
+                );
+
+
+                constructionClientForm.reset();
+
+
+                clientForm.style.display =
+                    "none";
+
+
+                await loadClients();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Save client error:",
+                    error
+                );
+
+                alert(
+                    "Failed to save client: " +
+                    error.message
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// LOAD CLIENTS WHEN PAGE OPENS
+
+loadClients();
+// ==========================================
+// WORKER MANAGEMENT
+// ==========================================
+
+
+// LOAD WORKERS
+
+async function loadWorkers() {
+
+    const workerList =
+        document.getElementById("workerList");
+
+    if (!workerList) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(API_URL + "/api/workers");
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load workers"
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        console.log(
+            "Workers received:",
+            data
         );
 
 
-    const projectNumber =
-        document.querySelector(
-            ".card:nth-child(1) .number"
+        const workers =
+            Array.isArray(data)
+                ? data
+                : data.workers || [];
+
+
+        workerList.innerHTML = "";
+
+
+        if (workers.length === 0) {
+
+            workerList.innerHTML = `
+
+                <div class="empty-state">
+
+                    <h3>
+                        No workers yet
+                    </h3>
+
+                    <p>
+                        Add your first construction worker.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        workers.forEach(function(worker) {
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "project-card";
+
+
+            card.innerHTML = `
+
+                <div class="project-header">
+
+                    <h3>
+                        ${worker.worker_name}
+                    </h3>
+
+                </div>
+
+
+                <div class="project-details">
+
+                    <p>
+                        <strong>Job Title:</strong>
+                        ${worker.job_title || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        ${worker.phone || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        ${worker.email || "N/A"}
+                    </p>
+
+                    <p>
+                        <strong>Address:</strong>
+                        ${worker.address || "N/A"}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            workerList.appendChild(card);
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Worker loading error:",
+            error
         );
 
+        workerList.innerHTML = `
 
-    if (projectNumber) {
+            <div class="empty-state">
 
-        projectNumber.textContent =
-            projectCards.length;
+                <h3>
+                    Unable to load workers
+                </h3>
+
+                <p>
+                    ${error.message}
+                </p>
+
+            </div>
+
+        `;
 
     }
 
 }
 
 
-// ======================================
-// LOAD PROJECTS WHEN PAGE OPENS
-// ======================================
 
-loadProjects();
+// SHOW / HIDE WORKER FORM
+
+const addWorkerBtn =
+    document.getElementById("addWorkerBtn");
+
+const workerForm =
+    document.getElementById("workerForm");
+
+
+if (addWorkerBtn && workerForm) {
+
+    addWorkerBtn.addEventListener(
+        "click",
+        function() {
+
+            if (
+                workerForm.style.display ===
+                "none"
+            ) {
+
+                workerForm.style.display =
+                    "block";
+
+            } else {
+
+                workerForm.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// SAVE WORKER
+
+const constructionWorkerForm =
+    document.getElementById(
+        "constructionWorkerForm"
+    );
+
+
+if (constructionWorkerForm) {
+
+    constructionWorkerForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const workerName =
+                document.getElementById(
+                    "workerNameInput"
+                ).value.trim();
+
+
+            const jobTitle =
+                document.getElementById(
+                    "jobTitleInput"
+                ).value.trim();
+
+
+            const phone =
+                document.getElementById(
+                    "workerPhone"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "workerEmail"
+                ).value.trim();
+
+
+            const address =
+                document.getElementById(
+                    "workerAddress"
+                ).value.trim();
+
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL + "/api/workers",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                workerName:
+                                    workerName,
+
+                                jobTitle:
+                                    jobTitle,
+
+                                phone:
+                                    phone,
+
+                                email:
+                                    email,
+
+                                address:
+                                    address
+
+                            })
+
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                console.log(
+                    "Save worker result:",
+                    result
+                );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Failed to save worker"
+                    );
+
+                }
+
+
+                alert(
+                    "Worker saved successfully!"
+                );
+
+
+                constructionWorkerForm.reset();
+
+
+                workerForm.style.display =
+                    "none";
+
+
+                await loadWorkers();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Save worker error:",
+                    error
+                );
+
+                alert(
+                    "Failed to save worker: " +
+                    error.message
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// LOAD WORKERS WHEN PAGE OPENS
+
+loadWorkers();
